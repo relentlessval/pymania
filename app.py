@@ -1,17 +1,29 @@
 import random, time, os, sys, json
 from tkinter import *
 
-class App:
+app = Tk()
+app.geometry = [800,600]
+app.resizable = [False, False]
+app.winfo_name = "pymania"
 
-    player = json.load(open("player.json", 'w'))
+playerfile = json.load(open("player.json", 'w'))
+player = []
+for x in playerfile:
+    player.append(x)
 
-    def __init__(self, player, app):
-        self.player = []
-        for x in player:
-            self.player.append(x)
-        if self.player.name == "":
-            self.player.name = "Guest"
-        self.app = Tk()
-        self.app.geometry = [800,600]
-        self.app.resizable = [False, False]
-    
+if player.name == "":
+
+    OPTIONS = [
+        "English",
+        "日本語",
+        "Español"
+    ] #etc
+
+
+    lang_select = StringVar(app)
+    lang_select.set(OPTIONS[0]) # default value
+
+    w = OptionMenu(master, lang_select, *OPTIONS)
+    w.pack()
+
+    lang = lang_select.get()
