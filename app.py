@@ -27,3 +27,9 @@ if player.name == "":
     w.pack()
 
     lang = lang_select.get()
+    if lang = "English":
+        player.name = input("What's your name? (default: Guest) ")
+    elif lang = "日本語":
+        player.name = input("あなたの名前は何ですか？　(デフォルト:Guest) ")
+    elif lang = "Español":
+        player.name = input("Como te llamas?    ")
