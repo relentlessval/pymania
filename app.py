@@ -6,12 +6,12 @@ app.geometry = [800,600]
 app.resizable = [False, False]
 app.winfo_name = "pymania"
 
-playerfile = json.load(open("player.json", 'w'))
-player = []
-for x in playerfile:
-    player.append(x)
+def dump(dumpfile):
+    json.dumps(dumpfile)
 
-if player.name == "":
+playerfile = json.load(open("player.json", 'w'))
+
+if playerfile.name == "":
 
     OPTIONS = [
         "English",
@@ -27,9 +27,15 @@ if player.name == "":
     w.pack()
 
     lang = lang_select.get()
+    playerfile.lang = lang
+    dump(playerfile)
     if lang = "English":
-        player.name = input("What's your name? (default: Guest) ")
+        playerfile.name = input("What's your name? (default: Guest) ")
+        dump(playerfile)
     elif lang = "日本語":
-        player.name = input("あなたの名前は何ですか？　(デフォルト:Guest) ")
+        playerfile.name = input("あなたの名前は何ですか？　(デフォルト: Guest) ")
+        dump(playerfile)
     elif lang = "Español":
-        player.name = input("Como te llamas?    ")
+        playerfile.name = input("Como te llamas? (nombre predeterminado: Guest) ")
+        dump(playerfile)
+    
